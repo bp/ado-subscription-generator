@@ -19,7 +19,7 @@ The json representation should looked like the following:
 }
 ```
 
-An event router pattern 
+An event router pattern can be put in place to ensure that all data is landed. There are many different implementations of this but one implementation 
 
 ![Event router pattern](./docs/event_router.png "Event Router pattern")
 
