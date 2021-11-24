@@ -19,7 +19,7 @@ The json representation should looked like the following:
 }
 ```
 
-An event router pattern can be put in place to ensure that all data is landed. There are many different implementations of this but one implementation 
+An event router pattern can be put in place to ensure that all data is landed. There are many different implementations of this but a simple design is a translation layer from received service bus messages to an event hub message via input/output bindings. This can then be streamed through the event hub, buffered based on writing a minimum row count and written to a landing container.
 
 ![Event router pattern](./docs/event_router.png "Event Router pattern")
 
