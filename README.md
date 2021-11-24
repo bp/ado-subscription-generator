@@ -19,6 +19,10 @@ The json representation should looked like the following:
 }
 ```
 
+An event router pattern 
+
+![Event router pattern](./docs/event_router.png "Event Router pattern")
+
 In addition to the subscription generation sll service bus messages are received by a boiler plate Azure Function which can be deployed. The sample code containing the input and output bindings is in the repo. In order to deploy the function the following should be created in the local.settings.json file which contains the connection string (access policy) to the service and an event hub connection string. The input binding to the service bus produces a one-to-one message onto the event hub for the Azure DevOps triggered event.
 
 ```
