@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "code.push",
+      "connection": "zweedosn11dossb1_SERVICEBUS_CODEPUSHED"
+    },
+    {
+      "type": "eventHub",
+      "name": "$return",
+      "eventHubName": "zweedosn11doscodepushedeh01",
+      "connection": "zweedosn11dossb1_EVENTHUB_CODEPUSHED",
+      "direction": "out"
+  }
+  ]
+}

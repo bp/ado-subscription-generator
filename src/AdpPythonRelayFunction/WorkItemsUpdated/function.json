@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "work.items.updated",
+      "connection": "zweedosn11dossb1_SERVICEBUS"
+    },
+    {
+      "type": "eventHub",
+      "name": "$return",
+      "eventHubName": "workitemspoc",
+      "connection": "zweedosn11dossb1_EVENTHUB",
+      "direction": "out"
+  }
+  ]
+}

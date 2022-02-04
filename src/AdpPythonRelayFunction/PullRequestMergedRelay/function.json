@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "pull.request.merge",
+      "connection": "zweedosn11dossb1_SERVICEBUS_pullrequestMerged"
+    },
+    {
+      "type": "eventHub",
+      "name": "$return",
+      "eventHubName": "zweedosn11dosbuildcompletedeh2",
+      "connection": "zweedosn11dossb1_EVENTHUB_BUILDCOMPLETED",
+      "direction": "out"
+  }
+  ]
+}
