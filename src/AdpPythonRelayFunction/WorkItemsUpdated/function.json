@@ -6,13 +6,13 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "work.items.updated",
-      "connection": "zweedosn11dossb1_SERVICEBUS"
+      "connection": "zweedosn11dossb1_SERVICEBUS_WORKITEMS"
     },
     {
       "type": "eventHub",
       "name": "$return",
       "eventHubName": "workitemspoc",
-      "connection": "zweedosn11dossb1_EVENTHUB",
+      "connection": "zweedosn11dossb1_EVENTHUB_WORKITEMS",
       "direction": "out"
   }
   ]

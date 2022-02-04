@@ -12,7 +12,7 @@
       "type": "eventHub",
       "name": "$return",
       "eventHubName": "zweedosn11dosbuildcompletedeh2",
-      "connection": "zweedosn11dossb1_EVENTHUB_BUILDCOMPLETED",
+      "connection": "zweedosn11dossb1_EVENTHUB_PULLREQUESTMERGED",
       "direction": "out"
   }
   ]
