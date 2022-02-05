@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: Restore Verbrose
+      run: dotnet restore -verbosity
     - name: Restore dependencies
       run: dotnet restore -s /src/C#/AdoSubscriptionGenerator/AdoSubscriptionGenerator.csproj
     - name: Build
