@@ -20,7 +20,7 @@ jobs:
     - name: Restore Verbrose
       run: dotnet restore -verbosity --d
     - name: Restore dependencies
-      run: dotnet restore -s /src/C#/AdoSubscriptionGenerator/AdoSubscriptionGenerator.csproj
+      run: dotnet restore -s src/**/*.csproj
     - name: Build
       run: dotnet build --no-restore
     - name: Test
