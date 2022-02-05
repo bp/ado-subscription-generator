@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore -s /src/C#/
+      run: dotnet restore -s /src/C#/AdoSubscriptionGenerator/AdoSubscriptionGenerator.csproj
     - name: Build
-      run: dotnet build /src/C#/ --no-restore
+      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test /src/C#/ --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
