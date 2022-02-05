@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore Verbrose
-      run: dotnet restore -verbosity
+      run: dotnet restore -verbosity --d
     - name: Restore dependencies
       run: dotnet restore -s /src/C#/AdoSubscriptionGenerator/AdoSubscriptionGenerator.csproj
     - name: Build
