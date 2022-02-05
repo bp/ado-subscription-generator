@@ -20,14 +20,14 @@ namespace bp.AdoSubscriptionGenerator
                var publisherList = await workflow.GetPublisherList();
                foreach (var project in projectList)
                {
-                  if(!String.IsNullOrEmpty(opt.ProjectOverride) && project.Item1 == opt.ProjectOverride)
+                  if(!String.IsNullOrEmpty(opt.ProjectOverride) && (project.Item1 == opt.ProjectOverride || opt.ProjectOverride == "all"))
                     {
                         if (opt.SubscriptionControl == "create")
                             await foreach (var subscription in workflow.AddSubscriptions(project.Item1))
                             {
                                 Console.WriteLine("Create subscription called for workflow");
                             }
-                        else if (opt.SubscriptionControl == "Delete" && !String.IsNullOrEmpty(opt.QueueName))
+                        else if (opt.SubscriptionControl == "delete" && !String.IsNullOrEmpty(opt.QueueName))
                             await foreach (var subscription in workflow.DeleteSubscriptions(project.Item1))
                             {
                                 Console.WriteLine("Delete subscription called for workflow");

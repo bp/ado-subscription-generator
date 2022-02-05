@@ -42,9 +42,18 @@ namespace bp.AdoSubscriptionGenerator
             EventType = details.EventId,
             PublisherId = details.PublisherId
          };
+            String id = "";
 
-         Subscription newSubscription = await serviceHooksClient.CreateSubscriptionAsync(subscriptionParameters);
-         return newSubscription.Id.ToString();
+            try
+            {
+                Subscription newSubscription = await serviceHooksClient.CreateSubscriptionAsync(subscriptionParameters);
+                id = newSubscription.Id.ToString();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return id;
       }
    }
 

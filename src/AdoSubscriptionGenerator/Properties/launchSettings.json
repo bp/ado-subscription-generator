@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "AdoSubscriptionGenerator": {
-      "commandName": "Project",
-      "commandLineArgs": "--subscription-control create --project-override ef279917-799c-4fdc-8963-a3bba556ea66"
-    }
-  }
-}

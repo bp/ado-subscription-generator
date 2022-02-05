@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AdoSubscriptionGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "--subscription-control create --project-override all"
+    }
+  }
+}

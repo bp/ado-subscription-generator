@@ -45,7 +45,11 @@ namespace bp.AdoSubscriptionGenerator
       /// The queue name to register the trigger with
       /// </summary>
       public string QueueName { get { return GetConfigArguments()["queueName"]; } }
-      private VssBasicCredential GetCredentials()
+        /// <summary>
+        /// The Event Type name 
+        /// </summary>
+        public string EventTypeName { get { return GetConfigArguments()["eventType"]; } }
+        private VssBasicCredential GetCredentials()
       {
          return new VssBasicCredential(string.Empty, GetConfigArguments()["pat"]);
       }
@@ -91,24 +95,27 @@ namespace bp.AdoSubscriptionGenerator
          string id = null;
          foreach (var eventType in ServiceHookEventDescription.ServiceHookEventDescriptionList())
          {
-            try
-            {
-               var details = new SubscriptionDetails()
-               {
-                  PublisherId = eventType.PublisherId,
-                  ProjectId = projectId,
-                  EventId = eventType.EventId,
-                  ConnectionString = this.ConnectionString,
-                  QueueName = this.QueueName
-               };
-               id = await subscriberAdd.Add(details);
-               Console.WriteLine($"Register event: {eventType.EventId} for project {projectId} with subscription id: {id}");
-            }
-            catch
-            {
-               Console.WriteLine($"Publisher {eventType.PublisherId} failed for project {projectId} and event {eventType.EventId}");
-            }
-            yield return id;
+                if(eventType.EventId == this.EventTypeName || this.EventTypeName == "all") {
+
+                    try
+                    {
+                        var details = new SubscriptionDetails()
+                        {
+                            PublisherId = eventType.PublisherId,
+                            ProjectId = projectId,
+                            EventId = eventType.EventId,
+                            ConnectionString = this.ConnectionString,
+                            QueueName = this.QueueName
+                        };
+                        id = await subscriberAdd.Add(details);
+                        Console.WriteLine($"Register event: {eventType.EventId} for project {projectId} with subscription id: {id}");
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Publisher {eventType.PublisherId} failed for project {projectId} and event {eventType.EventId}");
+                    }
+                    yield return id;
+                }
          }
       }
       
@@ -118,24 +125,27 @@ namespace bp.AdoSubscriptionGenerator
          string id = null;
          foreach (var eventType in ServiceHookEventDescription.ServiceHookEventDescriptionList())
          {
-            try
-            {
-               var details = new SubscriptionDetails()
-               {
-                  PublisherId = eventType.PublisherId,
-                  ProjectId = projectId,
-                  EventId = eventType.EventId,
-                  ConnectionString = this.ConnectionString,
-                  QueueName = this.QueueName
-               };
-               id = await subscriberAdd.Delete(details);
-               Console.WriteLine($"Register event: {eventType.EventId} for project {projectId} with subscription id: {id}");
-            }
-            catch
-            {
-               Console.WriteLine($"Publisher {eventType.PublisherId} failed for project {projectId} and event {eventType.EventId}");
-            }
-            yield return id;
+                if (eventType.EventId == this.EventTypeName || this.EventTypeName == "all") {
+                    try
+                    {
+                        var details = new SubscriptionDetails()
+                        {
+                            PublisherId = eventType.PublisherId,
+                            ProjectId = projectId,
+                            EventId = eventType.EventId,
+                            ConnectionString = this.ConnectionString,
+                            QueueName = this.QueueName
+                        };
+                        id = await subscriberAdd.Delete(details);
+                        Console.WriteLine($"Register event: {eventType.EventId} for project {projectId} with subscription id: {id}");
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Publisher {eventType.PublisherId} failed for project {projectId} and event {eventType.EventId}");
+                    }
+                    yield return id;
+
+                }
          }
       }
 
